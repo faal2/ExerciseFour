@@ -189,7 +189,93 @@ namespace SkalProj_Datastrukturer_Minne
              * Loop this method until the user inputs something to exit to main menue.
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
+             * Implementera en ReverseText-metod
             */
+
+            while (true)
+            {
+                Console.WriteLine("All about stacks! Please make a choice 1 or 2."
+                    + "\n1. Examine ICA's strange line"
+                    + "\n2. Reverse a text"
+                    + "\n0. Exit back to the main menu");
+
+                Console.Write("Write: ");
+                string input = Console.ReadLine();
+                char nav = input[0];
+
+                if (nav == '0')
+                {
+                    Console.WriteLine("Back to main menu");
+                    break;
+                }
+
+                switch (nav)
+                {
+                    case '1':
+                        Console.WriteLine("Welcome to strange ICA.");
+
+                        Stack<string> theStack = new Stack<string>();
+
+                        while (true)
+                        {
+                            Console.WriteLine("Please write '+' to push or '-' to pop"
+                                + "\n+"
+                                + "\n-");
+
+                            Console.Write("Write: ");
+                            string inputStack = Console.ReadLine();
+                            char navStack = inputStack[0];
+
+                            switch (navStack)
+                            {
+                                case '+':
+                                    Console.WriteLine("Add name: ");
+                                    string inputAdd = Console.ReadLine();
+                                    theStack.Push(inputAdd);
+                                    Console.WriteLine($"{inputAdd} just got added to the strange line.");
+                                    break;
+                                case '-':
+                                    string beGone = theStack.Pop();
+                                    Console.WriteLine($"{beGone} just got removed from the strange line. ");
+                                    theStack.Pop();
+                                    break;
+                                case '0':
+                                    return;
+                                default:
+                                    Console.WriteLine("Please enter some valid input.");
+                                    break;
+                            }
+
+                            if (theStack.Count > 0)
+                            {
+                                Console.Write($"Names in the line: ");
+                                foreach (var item in theStack)
+                                {
+                                    Console.Write($"{item.ToString()}, ");
+                                }
+                                Console.WriteLine("\n");
+                            }
+                        }
+
+                    case '2':
+                        Console.WriteLine("Please write a text that you want to see reversed:");
+                        string textInput = Console.ReadLine();
+
+                        Stack<char> charStack = new Stack<char>();
+
+                        foreach (char letter in textInput)
+                        {
+                            charStack.Push(letter);
+                        }
+
+                        Console.WriteLine(charStack.ToString);
+                        break;
+
+                    default:
+                        Console.WriteLine("Please enter some valid input (1, 2, 0)");
+                        break;
+                }
+            }
         }
 
         static void CheckParanthesis()
