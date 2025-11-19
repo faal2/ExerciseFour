@@ -62,7 +62,7 @@ namespace SkalProj_Datastrukturer_Minne
        
             while (true)
             {
-                Console.WriteLine("Please write a name to be added or removed from a list. \n(+Name, -Name, 0) of your choice"
+                Console.WriteLine("Please write a name to be added or removed from a list of your choice"
                     + "\n+Name"
                     + "\n-Name"
                     + "\n0. Exit back to the main menu");
@@ -128,6 +128,56 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
+            Console.WriteLine("Welcome to ICA queue."
+                    + "\nICA opens and the queue is empty.");
+
+
+            Queue<string> theList = new Queue<string>();
+
+            while (true)
+            {
+                Console.WriteLine("Please write '+' for enqueue or '-' from a dequeue of your choice"
+                    + "\n+"
+                    + "\n-"
+                    + "\n0. Exit back to the main menu");
+
+                Console.Write("Write: ");
+                string input = Console.ReadLine();
+                char nav = input[0];
+
+                if (nav == '0')
+                {
+                    Console.WriteLine("Back to main menu");
+                    break;
+                }
+                switch (nav)
+                {
+                    case '+':
+                        Console.WriteLine("Add name: ");
+                        string inputAdd = Console.ReadLine();
+                        theList.Enqueue(inputAdd);
+                        Console.WriteLine($"{inputAdd} just added.");
+                        break;
+                    case '-':
+                        var nextUp = theList.Dequeue();
+                        Console.WriteLine($"Next up: {nextUp.ToString()}");
+                        break;
+                    case '0':
+                        return;
+                    default:
+                        Console.WriteLine("Please enter some valid input.");
+                        break;
+                }
+                if (theList.Count>0)
+                {
+                    Console.Write($"People in the queue: ");
+                    foreach (var person in theList )
+                    {
+                        Console.Write($"{person.ToString()}, ");
+                    }
+                    Console.WriteLine("\n");
+                }    
+            }
         }
 
         /// <summary>
