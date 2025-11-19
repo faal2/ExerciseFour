@@ -4,10 +4,6 @@ namespace SkalProj_Datastrukturer_Minne
 {
     class Program
     {
-        /// <summary>
-        /// The main method, vill handle the menues for the program
-        /// </summary>
-        /// <param name="args"></param>
         static void Main()
         {
 
@@ -62,22 +58,64 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineList()
         {
-            /*
-             * Loop this method untill the user inputs something to exit to main menue.
-             * Create a switch statement with cases '+' and '-'
-             * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
-             * '-': Remove the rest of the input from the list (The user could write -Adam and "Adam" would be removed from the list)
-             * In both cases, look at the count and capacity of the list
-             * As a default case, tell them to use only + or -
-             * Below you can see some inspirational code to begin working.
-            */
+            List<string> theList = new List<string>();
+       
+            while (true)
+            {
+                Console.WriteLine("Please write a name to be added or removed from a list. \n(+Name, -Name, 0) of your choice"
+                    + "\n+Name"
+                    + "\n-Name"
+                    + "\n0. Exit back to the main menu");
+                if (theList.Count > 0)
+                {
+                    
+                    Console.WriteLine("All the people in the list thus far: "); 
+                    foreach (string name in theList)
+                    {
+                    Console.WriteLine(name);
+                    }
+                    Console.WriteLine($"So that is about {theList.Count} amount of people. And the capacity is currently: {theList.Capacity}");
+                    /* Capacity starts of at 4, then grows to 8 when you have reached 4 and add another one in the list.
+                    then 16, then 32. There for 2x the previous capacity. 
 
-            //List<string> theList = new List<string>();
-            //string input = Console.ReadLine();
-            //char nav = input[0];
-            //string value = input.substring(1);
+                    What's interesting is that the capacity doesn't decrease after you have gone below capacity.
+                    Now if you invited people to a party and you said they can only bring two people, having a fixed array would
+                    be better than having a list as a list can add more and more.
 
-            //switch(nav){...}
+                    Then as it pertains to why capacity doesn't grow in relation to count, I had to google that one. And what I learned 
+                    was that it minimizes the amount of reallocations to memory, which makes sense, rather do it in leaps then again and again.
+                    */
+                }
+                else
+                {
+                    Console.WriteLine("Currently no name exist.");
+                }
+
+            Console.Write("Write: ");
+            string input = Console.ReadLine();
+            char nav = input[0];
+            string value = input.Substring(1);
+
+            if (nav == '0')
+            {
+                    Console.WriteLine("Back to main menu");
+                    break;
+            }
+            switch (nav)
+                {
+                case '+':
+                        theList.Add(value);
+                    break;
+                case '-':
+                    theList.Remove(value);
+                    break;            
+                case '0':   
+                    return;    
+                default:    
+                    Console.WriteLine("Please enter some valid input (+Name, -Name, 0)");
+                    break;
+                 }
+            }
         }
 
         /// <summary>
