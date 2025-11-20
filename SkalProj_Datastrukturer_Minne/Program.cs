@@ -177,9 +177,16 @@ namespace SkalProj_Datastrukturer_Minne
                         Console.WriteLine($"{inputAdd} just added.");
                         break;
                     case '-':
+                        if (theList.Count>0)
+                        {
                         var nextUp = theList.Dequeue();
                         Console.WriteLine($"Next up: {nextUp.ToString()}");
-                        break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("It's empty");
+                        }
+                            break;
                     case '0':
                         return;
                     default:
@@ -271,9 +278,15 @@ namespace SkalProj_Datastrukturer_Minne
                                     Console.WriteLine($"{inputAdd} just got added to the strange line.");
                                     break;
                                 case '-':
+                                    if (theStack.Count>0)
+                                    { 
                                     string beGone = theStack.Pop();
                                     Console.WriteLine($"{beGone} just got removed from the strange line. ");
-                                    theStack.Pop();
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("It's empty");
+                                    }
                                     break;
                                 case '0':
                                     return;
