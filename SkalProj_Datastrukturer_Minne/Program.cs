@@ -268,7 +268,11 @@ namespace SkalProj_Datastrukturer_Minne
                             charStack.Push(letter);
                         }
 
-                        Console.WriteLine(charStack.ToString);
+                        foreach (var item in charStack)
+                        {
+                            Console.Write(item);
+                        }
+
                         break;
 
                     default:
