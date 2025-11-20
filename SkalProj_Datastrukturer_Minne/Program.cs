@@ -290,6 +290,54 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
 
+            while (true)
+            {
+                Console.WriteLine("Welcome to the Parenthesis Checker!"
+            + "\nPlease write text to check if the parenthesis are well formed. "
+            + "\n(Example: (()), {}, [({})])"
+            + "\n0. Exit back to the main menu");
+                Console.Write("Write: ");
+                string input = Console.ReadLine();
+                char nav = input[0];
+
+                string leftSide = "({[";
+                string rightSide = ")}]";
+
+                if (nav == '0')
+                {
+                    Console.WriteLine("Back to main menu");
+                    break;
+                }
+                int count = 0;
+                Stack<char> theStack = new Stack<char>();
+                foreach (char symbole in input)
+                {
+
+                    if (leftSide.Contains(symbole))
+                    {
+                        int indexLeft = leftSide.IndexOf(symbole);
+                        theStack.Push(rightSide[indexLeft]);
+                        count++;
+                    }
+                    else
+                    {
+                        if ((rightSide.Contains(symbole)) && (theStack.Peek() == symbole))
+                        {
+                            theStack.Pop();
+                        }
+
+                    }
+                }
+                if ((count != 0) && theStack.Count == 0)
+                {
+                    Console.WriteLine("Correctly done!");
+                }
+                else
+                {
+                    Console.WriteLine("Wrongly done!");
+                }
+
+            }
         }
 
     }
