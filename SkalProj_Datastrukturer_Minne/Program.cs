@@ -92,7 +92,13 @@ namespace SkalProj_Datastrukturer_Minne
                 }
 
             Console.Write("Write: ");
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
+            if (string.IsNullOrEmpty(input))
+               {
+               Console.Clear();
+               Console.WriteLine("Please enter some input!");
+               continue;
+               }
             char nav = input[0];
             string value = input.Substring(1);
 
@@ -142,7 +148,13 @@ namespace SkalProj_Datastrukturer_Minne
                     + "\n0. Exit back to the main menu");
 
                 Console.Write("Write: ");
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter some input!");
+                    continue;
+                }
                 char nav = input[0];
 
                 if (nav == '0')
@@ -154,7 +166,13 @@ namespace SkalProj_Datastrukturer_Minne
                 {
                     case '+':
                         Console.WriteLine("Add name: ");
-                        string inputAdd = Console.ReadLine();
+                        string? inputAdd = Console.ReadLine();
+                        if (string.IsNullOrEmpty(inputAdd))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Please enter some input next time!");
+                            continue;
+                        }
                         theList.Enqueue(inputAdd);
                         Console.WriteLine($"{inputAdd} just added.");
                         break;
@@ -200,7 +218,13 @@ namespace SkalProj_Datastrukturer_Minne
                     + "\n0. Exit back to the main menu");
 
                 Console.Write("Write: ");
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter some input!");
+                    continue;
+                }
                 char nav = input[0];
 
                 if (nav == '0')
@@ -223,14 +247,26 @@ namespace SkalProj_Datastrukturer_Minne
                                 + "\n-");
 
                             Console.Write("Write: ");
-                            string inputStack = Console.ReadLine();
+                            string? inputStack = Console.ReadLine();
+                            if (string.IsNullOrEmpty(inputStack))
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Please enter some input next time!");
+                                continue;
+                            }
                             char navStack = inputStack[0];
 
                             switch (navStack)
                             {
                                 case '+':
                                     Console.WriteLine("Add name: ");
-                                    string inputAdd = Console.ReadLine();
+                                    string? inputAdd = Console.ReadLine();
+                                    if (string.IsNullOrEmpty(inputAdd))
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("Please enter some input!");
+                                        continue;
+                                    }
                                     theStack.Push(inputAdd);
                                     Console.WriteLine($"{inputAdd} just got added to the strange line.");
                                     break;
@@ -259,8 +295,13 @@ namespace SkalProj_Datastrukturer_Minne
 
                     case '2':
                         Console.WriteLine("Please write a text that you want to see reversed:");
-                        string textInput = Console.ReadLine();
-
+                        string? textInput = Console.ReadLine();
+                        if (string.IsNullOrEmpty(textInput))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Please enter some input!");
+                            continue;
+                        }
                         Stack<char> charStack = new Stack<char>();
 
                         foreach (char letter in textInput)
@@ -297,7 +338,13 @@ namespace SkalProj_Datastrukturer_Minne
             + "\n(Example: (()), {}, [({})])"
             + "\n0. Exit back to the main menu");
                 Console.Write("Write: ");
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter some input!");
+                    continue;
+                }
                 char nav = input[0];
 
                 string leftSide = "({[";
