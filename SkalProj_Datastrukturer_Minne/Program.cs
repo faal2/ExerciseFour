@@ -369,6 +369,7 @@ namespace SkalProj_Datastrukturer_Minne
                     break;
                 }
                 Stack<char> theStack = new Stack<char>();
+                bool isItValid = true;
                 foreach (char symbole in input)
                 {
 
@@ -378,16 +379,27 @@ namespace SkalProj_Datastrukturer_Minne
                         theStack.Push(rightSide[indexLeft]);
 
                     }
-                    else
+                    else if (rightSide.Contains(symbole))
                     {
-                        if ((rightSide.Contains(symbole)) && (theStack.Peek() == symbole))
+                        if (theStack.Count ==0)
+                        {
+                            isItValid = false;
+                            break;
+                        }
+                        else if ((theStack.Peek() == symbole))
                         {
                             theStack.Pop();
                         }
+                        else
+                        {
+                            isItValid = false;
+                            break;
+                        }
 
                     }
+                    
                 }
-                if ( theStack.Count == 0)
+                if ( (isItValid == true) && (theStack.Count == 0))
                 {
                     Console.WriteLine("Correctly done!");
                 }
