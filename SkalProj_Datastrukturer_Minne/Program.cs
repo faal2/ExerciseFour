@@ -360,8 +360,10 @@ namespace SkalProj_Datastrukturer_Minne
                 }
                 char nav = input[0];
 
-                string leftSide = "({[";
-                string rightSide = ")}]";
+                Dictionary<char, char> paranthesisDict = new Dictionary<char, char>
+                {
+                    {'(',')' },{'[', ']'},{'{', '}'}
+                };
 
                 if (nav == '0')
                 {
@@ -372,14 +374,13 @@ namespace SkalProj_Datastrukturer_Minne
                 bool isItValid = true;
                 foreach (char symbole in input)
                 {
-
-                    if (leftSide.Contains(symbole))
+                    if (paranthesisDict.ContainsKey(symbole))
                     {
-                        int indexLeft = leftSide.IndexOf(symbole);
-                        theStack.Push(rightSide[indexLeft]);
 
+                        theStack.Push(paranthesisDict[symbole]);
                     }
-                    else if (rightSide.Contains(symbole))
+                   
+                    else if (paranthesisDict.ContainsValue(symbole))
                     {
                         if (theStack.Count ==0)
                         {
