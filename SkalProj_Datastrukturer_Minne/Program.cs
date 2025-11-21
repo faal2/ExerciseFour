@@ -368,7 +368,6 @@ namespace SkalProj_Datastrukturer_Minne
                     Console.WriteLine("Back to main menu");
                     break;
                 }
-                int count = 0;
                 Stack<char> theStack = new Stack<char>();
                 foreach (char symbole in input)
                 {
@@ -377,7 +376,7 @@ namespace SkalProj_Datastrukturer_Minne
                     {
                         int indexLeft = leftSide.IndexOf(symbole);
                         theStack.Push(rightSide[indexLeft]);
-                        count++;
+
                     }
                     else
                     {
@@ -388,7 +387,7 @@ namespace SkalProj_Datastrukturer_Minne
 
                     }
                 }
-                if ((count != 0) && theStack.Count == 0)
+                if ( theStack.Count == 0)
                 {
                     Console.WriteLine("Correctly done!");
                 }
